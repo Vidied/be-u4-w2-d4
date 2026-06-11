@@ -4,6 +4,7 @@ import entities.Product;
 import entities.Customer;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -107,6 +108,16 @@ public class Main {
       System.out.println("Il cliente: " + customer.getName() + " ha speso un totale di: " + totale);
     });
 
+    //Esercizio 3
+    List<Product> prodottiCostosi = globalProducts.stream()
+        .sorted(Comparator.comparing(Product::getPrice).reversed()).toList();
+
+//    System.out.println("La lista dei prodotti in ordine dal più costoso è: " + prodottiCostosi);
+    System.out.println("Lista dei prodotti in ordine dal più costoso: ");
+    prodottiCostosi.forEach(product -> System.out.println("Prodotto: " + product.getName() + " del prezzo di: " + product.getPrice() + "€"));
+
+    //Esercizio 4
+    
 
 
 
