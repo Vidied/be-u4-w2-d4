@@ -5,6 +5,8 @@ import entities.Customer;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
   public static void main(String[] args) {
@@ -92,6 +94,15 @@ public class Main {
 
     System.out.println("\nProdotti ordinati dai clienti di tier 2 nella fascia di data specificata");
     customerProductFilter.forEach(System.out::println);
+
+    //Esercizio 1 del giorno 4
+    Map<Customer, List<Order>> ordiniCliente = globalOrders.stream().collect(Collectors.groupingBy(Order::getCustomer));
+    ordiniCliente.forEach(((customer, orders) -> {
+      System.out.println("Il cliente: " + customer.getName() + "ha effettuato gli ordini: " + orders);
+    }));
+
+    
+
 
 
 
