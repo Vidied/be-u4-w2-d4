@@ -117,7 +117,15 @@ public class Main {
     prodottiCostosi.forEach(product -> System.out.println("Prodotto: " + product.getName() + " del prezzo di: " + product.getPrice() + "€"));
 
     //Esercizio 4
-    
+    Map<Order, Double> mediaOrdini = globalOrders.stream()
+        .collect(Collectors.toMap(order -> order,
+            order -> order.getProducts().stream().mapToDouble(Product::getPrice).average().orElse(0.0)));
+
+
+
+    mediaOrdini.forEach((order, aDouble) -> {
+      System.out.println("La media dell'ordine: " + order.getId() + " è di: " + aDouble + "€");
+    });
 
 
 
