@@ -6,6 +6,7 @@ import entities.Customer;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -125,6 +126,15 @@ public class Main {
 
     mediaOrdini.forEach((order, aDouble) -> {
       System.out.println("La media dell'ordine: " + order.getId() + " è di: " + aDouble + "€");
+    });
+
+    //Esercizio 5
+    Map<String, Double> totaleCategoria = globalProducts.stream().collect(Collectors.groupingBy(
+        Product::getCategory, Collectors.summingDouble(Product::getPrice)
+    ));
+
+    totaleCategoria.forEach((Categoria, totale) -> {
+      System.out.println("Per la categoria: " + Categoria + " abbiamo un totale del valore di: " + totale + "€");
     });
 
 
