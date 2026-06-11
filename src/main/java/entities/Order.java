@@ -21,6 +21,10 @@ public class Order {
     this.customer = customer;
   }
 
+  public double calculateTotal(){
+    return this.getProducts().stream().mapToDouble(Product::getPrice).sum();
+  }
+
 
 
 

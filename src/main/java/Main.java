@@ -101,7 +101,14 @@ public class Main {
       System.out.println("Il cliente: " + customer.getName() + "ha effettuato gli ordini: " + orders);
     }));
 
-    
+    //Esercizio 2
+    Map<Customer, Double> totaleCostoOrdiniCliente = globalOrders.stream().collect(Collectors.groupingBy(Order::getCustomer, Collectors.summingDouble(Order::calculateTotal)));
+    totaleCostoOrdiniCliente.forEach((customer, totale) -> {
+      System.out.println("Il cliente: " + customer.getName() + " ha speso un totale di: " + totale);
+    });
+
+
+
 
 
 
